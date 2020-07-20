@@ -67,7 +67,7 @@ count = 1
 toPrint = ""
 for x in queso.ledger:
     if count < len(queso.ledger):
-        toPrint += (x[1])[0:23] + ("                       " str("{:.2f}".format(x[0])))[:]+ "\n"
+        toPrint += (x[1])[0:23] + ("                       " + str("{:.2f}".format(x[0])))[:]+ "\n"
     else:
         toPrint += (x[1])[0:23] + str("{:.2f}".format(x[0]))
     count += 1
