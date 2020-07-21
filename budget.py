@@ -55,18 +55,10 @@ class Category:
                     "*" * int(((30 - (len(self.name))) / 2) + 1)) + "\n" + toPrint + "\n" + "Total: " + str("{:.2f}".format(self.get_balance()))
 
 
-queso = Category("Food")
+food = Category("Food")
+entertainment = Category("Entertainment")
+business = Category("Business")
 
-queso.deposit(2000, "initial deposit")
-
-queso.deposit(1000, "un kilo de queso")
-
-queso.withdraw(500, "un kilo de jamon")
-
-jamon = Category("Tech")
-
-queso.transfer(200, jamon)
-
-print(queso)
-
+expected = "Percentage spent by category\n100|          \n 90|          \n 80|          \n 70|    o     \n 60|    o     \n 50|    o     \n 40|    o     \n 30|    o     \n 20|    o  o  \n 10|    o  o  \n  0| o  o  o  \n    ----------\n     B  F  E  \n     u  o  n  \n     s  o  t  \n     i  d  e  \n     n     r  \n     e     t  \n     s     a  \n     s     i  \n           n  \n           m  \n           e  \n           n  \n           t  "
+print(expected)
 # def create_spend_chart(categories):
