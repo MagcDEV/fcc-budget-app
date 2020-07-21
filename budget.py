@@ -36,18 +36,30 @@ class Category:
             return False
 
     def __str__(self):
+        count = 1
+        toPrint = ""
+        for x in self.ledger:
+            if count < len(self.ledger):
+                toPrint += (x[1] + "                       ")[0:23] + ("                       " +
+                                                                       str("{:.2f}".format(x[0])))[-7:] + "\n"
+            else:
+                toPrint += (x[1] + "                       ")[0:23] + ("                       " +
+                                                                       str("{:.2f}".format(x[0])))[-7:]
+            count += 1
+
         if len(self.name) % 2 == 0:
             return ("*" * int(((30 - (len(self.name))) / 2)) +
-                    self.name + "*" * int(((30 - (len(self.name))) / 2)))
+                    self.name + "*" * int(((30 - (len(self.name))) / 2))) + "\n" + toPrint + "\n" + "Total: " + str("{:.2f}".format(self.get_balance()))
         else:
             return ("*" * int(((30 - (len(self.name))) / 2)) + self.name +
-                    "*" * int(((30 - (len(self.name))) / 2) + 1))
+                    "*" * int(((30 - (len(self.name))) / 2) + 1)) + "\n" + toPrint + "\n" + "Total: " + str("{:.2f}".format(self.get_balance()))
+
 
 queso = Category("Food")
 
-queso.deposit(1000, "un kilo de queso")
+queso.deposit(2000, "initial deposit")
 
-queso.deposit(1000, "un kilo de quesoooooooooooooooo")
+queso.deposit(1000, "un kilo de queso")
 
 queso.withdraw(500, "un kilo de jamon")
 
@@ -55,25 +67,6 @@ jamon = Category("Tech")
 
 queso.transfer(200, jamon)
 
-print(queso.get_balance())
-print(jamon.get_balance())
-
-print(queso.ledger)
-print(jamon.ledger)
-
 print(queso)
 
-count = 1
-toPrint = ""
-for x in queso.ledger:
-    if count < len(queso.ledger):
-        toPrint += (x[1])[0:23] + ("                       " + str("{:.2f}".format(x[0])))[:]+ "\n"
-    else:
-        toPrint += (x[1])[0:23] + str("{:.2f}".format(x[0]))
-    count += 1
-
-print(toPrint)
-
 # def create_spend_chart(categories):
-
-
